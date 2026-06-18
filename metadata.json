@@ -1,0 +1,6 @@
+{
+  "name": "AdCraft AI",
+  "description": "AI-powered product video advertisement and marketing content generator for e-commerce.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
