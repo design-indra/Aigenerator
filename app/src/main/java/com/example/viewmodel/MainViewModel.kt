@@ -138,7 +138,21 @@ class MainViewModel(
                 )
                 
                 // Keep the chosen path or base reference
-                generatedProject.imagePath = localImagePath.value
+                val imagePathVal = localImagePath.value
+                if (imagePathVal.isNotEmpty() && !imagePathVal.startsWith("https://") && pickedBitmap.value != null) {
+                    try {
+                        val file = java.io.File(getApplication<Application>().filesDir, "prod_${System.currentTimeMillis()}.jpg")
+                        java.io.FileOutputStream(file).use { out ->
+                            pickedBitmap.value?.compress(Bitmap.CompressFormat.JPEG, 90, out)
+                        }
+                        generatedProject.imagePath = file.absolutePath
+                    } catch (e: Exception) {
+                        Log.e("MainViewModel", "Failed to save picking bitmap to file", e)
+                        generatedProject.imagePath = imagePathVal
+                    }
+                } else {
+                    generatedProject.imagePath = imagePathVal
+                }
                 
                 val newId = repository.insertProject(generatedProject)
                 val finalProject = generatedProject.copy(id = newId)

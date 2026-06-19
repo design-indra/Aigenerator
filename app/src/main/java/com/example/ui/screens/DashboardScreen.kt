@@ -1272,7 +1272,7 @@ fun ProjectDetailsScreen(
                                 .scale(animatedProgress),
                             contentAlignment = Alignment.Center
                         ) {
-                            if (project.imagePath.startsWith("https://")) {
+                            if (project.imagePath.isNotEmpty()) {
                                 AsyncImage(
                                     model = project.imagePath,
                                     contentDescription = "Dynamic preview background",
@@ -1876,7 +1876,7 @@ fun ProjectsListScreen(viewModel: MainViewModel) {
                                     .background(Color(0xFF0D061A)),
                                 contentAlignment = Alignment.Center
                             ) {
-                                if (project.imagePath.startsWith("https://")) {
+                                if (project.imagePath.isNotEmpty()) {
                                     AsyncImage(
                                         model = project.imagePath,
                                         contentDescription = "Project image",
