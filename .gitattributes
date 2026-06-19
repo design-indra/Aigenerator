@@ -1,0 +1,7 @@
+# Force binary files to be treated as binary (prevents CRLF translation corruption on Windows/Mixed environments)
+*.jar binary
+*.png binary
+*.jpg binary
+*.webp binary
+*.gif binary
+*.keystore binary
